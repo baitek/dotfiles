@@ -40,7 +40,7 @@ FYI: I'm running Ubuntu, but next time will probably switch to Arch.
 sudo apt update -y
 
 # install fonts
-## 
+## https://www.jetbrains.com/lp/mono/
 ## download, fc-cache to refresh, fc-list | grep font to verify
 
 sudo apt install zsh
