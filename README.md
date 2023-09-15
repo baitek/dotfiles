@@ -1,10 +1,8 @@
 # .dotfiles
 
-TODO: add screenshot of terminal
-
-Window manager: [sway](https://github.com/swaywm/sway)
-Terminal: [alacritty](https://github.com/alacritty/alacritty)
-Shell: Zsh + [Oh My Zsh!](https://ohmyz.sh/)
+Window manager: [sway](https://github.com/swaywm/sway)  
+Terminal: [alacritty](https://github.com/alacritty/alacritty)  
+Shell: Zsh + [Oh My Zsh!](https://ohmyz.sh/)  
 Editor: [neovim](https://github.com/neovim/neovim)
 
 ## Thoughts about setup and choices
@@ -64,6 +62,6 @@ sudo apt install ripgrep fd-find
 
 sudo apt install tmux
 ## install TPM (tmux plugin manager)
-## TODO: learn -> document
+## TODO: learn, modify, add ss of terminal after
 ```
 
