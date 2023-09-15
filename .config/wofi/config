@@ -1,0 +1,9 @@
+allow_images=true
+image_size=64
+term=alacritty
+location=2
+yoffset=150
+sort_order=alphabetical
+filter_rate=50
+insensitive=true
+
