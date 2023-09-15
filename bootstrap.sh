@@ -8,6 +8,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     rsync --exclude "bootstrap.sh" \
         --exclude "README.md" \
         --exclude ".git/" \
-        -avh . ~/test
+        -avh . ~
 fi
 
