@@ -39,3 +39,9 @@ export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/bartek
 # Disable highlight after pasting text to console
 unset zle_bracketed_paste 
 
+# Add folder with scripts to PATH
+export PATH="$PATH:/home/$(whoami)/.scripts"
+
+# Open terminal in home tmux session
+tmux attach-session -t /home/$(whoami) 2>/dev/null || tmux new-session -s /home/$(whoami) -c /home/$(whoami) 2>/dev/null
+

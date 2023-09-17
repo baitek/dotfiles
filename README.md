@@ -4,6 +4,7 @@ Window manager: [sway](https://github.com/swaywm/sway)
 Terminal: [alacritty](https://github.com/alacritty/alacritty)  
 Shell: Zsh + [Oh My Zsh!](https://ohmyz.sh/)  
 Editor: [neovim](https://github.com/neovim/neovim)
+Terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 
 ## Thoughts about setup and choices
 
@@ -31,6 +32,9 @@ and at start even painful, since stuff in IDE could be done so much quicker,
 but I really believe it is worth it. Using VIM motions is really starting to 
 be fun and faster. Thought of getting rid of the mental overhead of using mouse 
 is just awesome.
+
+As for terminal multiplexer, [tmux](https://github.com/tmux/tmux) allows saving
+sessions, splitting panes, easier navigation between projects.
 
 ## Installation commands
 
@@ -61,7 +65,6 @@ sudo apt install ripgrep fd-find
 ## configure neovim
 
 sudo apt install tmux
-## install TPM (tmux plugin manager)
-## TODO: learn, modify, add ss of terminal after
+## configure tmux
 ```
 
