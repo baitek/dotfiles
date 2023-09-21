@@ -7,6 +7,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     rsync --exclude 'bootstrap.sh' \
         --exclude 'README.md' \
         --exclude '.git/' \
+        --exclude '.gitignore' \
         -avhi . ~ | rg -e '^>f' | awk '{print "- " $2} END {if (NR == 0) print "[]"}'
 fi
 
