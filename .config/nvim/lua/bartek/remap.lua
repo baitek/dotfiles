@@ -34,8 +34,8 @@ vim.keymap.set("i", "<C-c>", "<Esc")
 -- unbind Q
 vim.keymap.set("n", "Q", "<nop>")
 
--- jump between projects TODO: learn it
--- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- jump between projects
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- format code
 vim.keymap.set("n", "<leader>f", function()
