@@ -19,7 +19,6 @@ source $ZSH/oh-my-zsh.sh
 #
 # User configuration
 #
-
 # Disable ctrl+s in Alacritty
 stty -ixon
 
@@ -33,14 +32,15 @@ setopt appendhistory
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-# Set paths for to pickup .desktop after Flatpak installation
-export XDG_DATA_DIRS="$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/bartek/.local/share/flatpak/exports/share"
-
 # Disable highlight after pasting text to console
 unset zle_bracketed_paste 
 
-# Add folder with scripts to PATH
-export PATH="$PATH:/home/$(whoami)/.scripts"
+# Set envs
+if [[ -z $TMUX ]]; then
+    path+=("/home/$(whoami)/.scripts")
+    path+=("/usr/local/go/bin")
+    export PATH
+fi
 
 # Open terminal in home tmux session
 tmux attach-session -t /home/$(whoami) 2>/dev/null || tmux new-session -s /home/$(whoami) -c /home/$(whoami) 2>/dev/null
