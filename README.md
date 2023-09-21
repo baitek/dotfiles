@@ -3,7 +3,7 @@
 Window manager: [sway](https://github.com/swaywm/sway)  
 Terminal: [alacritty](https://github.com/alacritty/alacritty)  
 Shell: Zsh + [Oh My Zsh!](https://ohmyz.sh/)  
-Editor: [neovim](https://github.com/neovim/neovim)
+Editor: [neovim](https://github.com/neovim/neovim)  
 Terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 
 ## Thoughts about setup and choices
