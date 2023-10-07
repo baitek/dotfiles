@@ -37,4 +37,6 @@ chown
 make
 fzf
 feh
+zip
+apt
 
