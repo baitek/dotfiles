@@ -212,3 +212,6 @@ font pango:Times New Roman 10
 # move window between monitors
 bindsym $mod+n move workspace to output right
 
+# sloppy focus for mouse
+focus_follows_mouse no
+
