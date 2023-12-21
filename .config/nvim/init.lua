@@ -130,7 +130,7 @@ vim.o.ignorecase = true                -- case-insensitive searching UNLESS \C
 vim.o.smartcase = true                 -- /\ or capital in search
 vim.wo.signcolumn = 'yes'              -- keep signcolumn on by default
 vim.o.updatetime = 250                 -- decrease update time
-vim.o.timeoutlen = 300                 -- timeout for sequence
+vim.o.timeoutlen = 500                 -- timeout for sequence
 vim.o.completeopt = 'menuone,noselect' -- set completeopt to have a better completion experience
 vim.o.termguicolors = true             -- NOTE: you should make sure your terminal supports this
 
