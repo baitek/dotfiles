@@ -12,7 +12,8 @@ return {
       cond = function()
         return vim.fn.executable 'make' == 1
       end
-    }
+    },
+    'nvim-telescope/telescope-ui-select.nvim'
   },
   config = function()
     require('telescope').setup {
@@ -25,22 +26,30 @@ return {
           }
         }
       },
-      -- Show hidden files with live greping
+      -- Find/search hidden files
       pickers = {
         live_grep = {
           additional_args = function()
             return { "--hidden" }
           end
+        },
+        find_files = {
+          hidden = true
+        }
+      },
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown{}
         }
       }
     }
-    -- Enable telescope fzf native, if installed
-    pcall(require('telescope').load_extension, 'fzf')
+    -- Enable telescope extensions
+    pcall(require('telescope').load_extension 'fzf')
+    require('telescope').load_extension('ui-select')
+
     -- See `:help telescope.builtin`
-    vim.keymap.set('n', '<leader>sf', "require('telescope.builtin').find_files{{ hidden = true }}<CR>",
-      { desc = '[S]earch [F]iles' })
-    vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch [G]rep' })
-    vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+    vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = 'Find files' })
+    vim.keymap.set('n', '<leader>sp', require('telescope.builtin').live_grep, { desc = 'Search in workspace with grep' })
+    vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search for help' })
   end
 }
-
