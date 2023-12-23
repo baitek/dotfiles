@@ -158,7 +158,7 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while ~/.config/sway/status.sh; do sleep 0.05; done
+    status_command while ~/.config/sway/status.sh; do sleep 0.1; done
 
     colors {
         statusline #ffffff
@@ -207,7 +207,7 @@ bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 bindsym $mod+Shift+t bar mode toggle
 
 # change font
-font pango:Times New Roman 10
+font JetBrainsMonoNLNerdFont 9
 
 # move window between monitors
 bindsym $mod+n move workspace to output right

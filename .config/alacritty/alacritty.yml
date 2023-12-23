@@ -13,13 +13,13 @@ window:
 font:
   size: 14
   normal:
-    family: JetBrainsMonoNL
+    family: JetBrainsMonoNLNerdFont
   bold:
-    family: JetBrainsMonoNL
+    family: JetBrainsMonoNLNerdFont
   italic:
-    family: JetBrainsMonoNL
+    family: JetBrainsMonoNLNerdFont
   bold_italic:
-    family: JetBrainsMonoNL
+    family: JetBrainsMonoNLNerdFont
 cursor:
   blink_interval: 500
   blink_timeout: 5
