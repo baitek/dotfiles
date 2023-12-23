@@ -43,9 +43,6 @@ if [[ -z $TMUX ]]; then
     export PATH
 fi
 
-# Add .zsh_functions folder to fpath
-fpath+=${ZDOTDIR:-~}/.zsh_functions
-
 # Open terminal in home tmux session
 tmux attach-session -t /home/$(whoami) 2>/dev/null || tmux new-session -s /home/$(whoami) -c /home/$(whoami) 2>/dev/null
 
