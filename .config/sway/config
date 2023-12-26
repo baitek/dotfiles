@@ -21,7 +21,7 @@ include /etc/sway/config-vars.d/*
 
 ### Output configuration
 #
-output * bg ~/.config/sway/the-big-universe-is-here-4k-q4-1920x1080.jpg  fill
+output * bg ~/.config/sway/geminidy-mountains-1920x1080.jpg  fill
 
 ### Idle configuration
 #

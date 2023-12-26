@@ -1,9 +1,15 @@
 allow_images=true
-image_size=64
 term=alacritty
-location=2
-yoffset=150
 sort_order=alphabetical
-filter_rate=50
+xoffset=710
+yoffset=275
+show=run
+width=600
+height=350
+always_parse_args=true
+show_all=true
+print_command=true
+layer=overlay
 insensitive=true
+prompt=
 
