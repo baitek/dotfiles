@@ -182,8 +182,8 @@ assign [class="Brave-browser"] 1
 exec --no-startup-id brave-browser
 
 workspace 3 output DP-2
-assign [class="discord"] 3 
-exec --no-startup-id discord
+assign [class="WebCord"] 3 
+exec --no-startup-id webcord
 
 workspace 4 output DP-2
 assign [class="obsidian"] 4
@@ -214,4 +214,7 @@ bindsym $mod+n move workspace to output right
 
 # sloppy focus for mouse
 focus_follows_mouse no
+
+# run xdg-desktop-portal for video sharing on discord/obs
+exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
 
