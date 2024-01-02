@@ -1,5 +1,6 @@
 return {
   -- File tree panel on the side
+  -- See `:help neo-tree`
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
   dependencies = {
@@ -11,4 +12,3 @@ return {
     vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>')
   end
 }
-

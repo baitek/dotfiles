@@ -1,4 +1,3 @@
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.config/oh-my-zsh"
 
@@ -17,8 +16,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-#
-# User configuration
+### User configuration
 #
 # Disable ctrl+s in Alacritty
 stty -ixon

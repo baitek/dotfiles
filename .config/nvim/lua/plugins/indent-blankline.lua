@@ -5,4 +5,3 @@ return {
   main = 'ibl',
   opts = {}
 }
-

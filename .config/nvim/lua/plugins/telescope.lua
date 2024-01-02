@@ -7,6 +7,7 @@ return {
     'nvim-lua/plenary.nvim',
     {
       -- Fuzzy Finder Algorithm which requires local dependencies to be built
+      -- See `:help telescope-fzf-native.nvim`
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
       cond = function()
@@ -48,8 +49,8 @@ return {
     require('telescope').load_extension('ui-select')
 
     -- See `:help telescope.builtin`
-    vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = 'Find files' })
-    vim.keymap.set('n', '<leader>sp', require('telescope.builtin').live_grep, { desc = 'Search in workspace with grep' })
+    vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = 'Search file names' })
+    vim.keymap.set('n', '<leader>sp', require('telescope.builtin').live_grep, { desc = 'Search phrase in workspace' })
     vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search for help' })
   end
 }

@@ -25,4 +25,3 @@ require('lazy').setup('plugins')
 -- [[ Configure settings and keymaps ]]
 require('keymaps')
 require('settings')
-
