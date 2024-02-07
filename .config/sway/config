@@ -201,3 +201,9 @@ focus_follows_mouse no
 
 # Run xdg-desktop-portal for video sharing on discord/obs
 exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
+
+# Show previous notification
+bindsym $mod+e exec dunstctl history-pop
+
+# Close all notifications
+bindsym $mod+w exec dunstctl close-all
