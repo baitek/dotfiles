@@ -201,6 +201,3 @@ focus_follows_mouse no
 
 # Run xdg-desktop-portal for video sharing on discord/obs
 exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
-
-# Run mako for notifications
-exec --no-startup-id mako
