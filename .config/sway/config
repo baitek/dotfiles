@@ -23,11 +23,14 @@ font JetBrainsMonoNLNerdFont 9
 set $menu wofi --show run
 set $dmenu wofi --show drun
 
+# Your wallpaper image
+set $wallpaper ~/Pictures/mountains.jpeg
+
 include /etc/sway/config-vars.d/*
 
 ### Output configuration
 #
-output * bg ~/.config/sway/the-big-universe-is-here-4k-q4-1920x1080.jpg fill
+output * bg $wallpaper fill
 
 ### Idle configuration
 #
@@ -35,9 +38,9 @@ output * bg ~/.config/sway/the-big-universe-is-here-4k-q4-1920x1080.jpg fill
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+         timeout 300 "swaylock -f -i $wallpaper" \
+         timeout 600 "swaymsg 'output * dpms off'" resume "swaymsg 'output * dpms on'" \
+         before-sleep "swaylock -f -i $wallpaper"
 
 ### Input configuration
 #
@@ -72,6 +75,9 @@ input "type:keyboard" {
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec 'swaymsg exit'
+
+    # Lock screen
+    bindsym $mod+p exec swaylock -f -i $wallpaper
 
 #
 # Moving around:
@@ -162,6 +168,7 @@ bar {
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
+
 }
 
 include /etc/sway/config.d/*
@@ -184,14 +191,6 @@ workspace 4 output DP-2
 assign [class="obsidian"] 4
 exec --no-startup-id obsidian
 
-workspace 5 output DP-2
-assign [app_id="com.obsproject.Studio"] 5
-exec --no-startup-id obs
-
-workspace 6 output DP-2
-assign [class="Gimp"] 6
-exec --no-startup-id gimp
-
 ### Custom settings
 #
 # Take selection screenshot
@@ -203,3 +202,5 @@ focus_follows_mouse no
 # Run xdg-desktop-portal for video sharing on discord/obs
 exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
 
+# Run mako for notifications
+exec --no-startup-id mako

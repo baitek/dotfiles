@@ -11,12 +11,12 @@ return {
     -- register any number of sources simultaneously
     local sources = {
       null_ls.builtins.formatting.prettier.with({
-        filetypes = { 'html', 'json', 'markdown', 'yaml' }
+        filetypes = { 'json', 'markdown', 'yaml', 'html', 'css' }
       }),
-      null_ls.builtins.formatting.phpcsfixer,
       null_ls.builtins.formatting.black.with({
         filetypes = { 'python' }
-      })
+      }),
+      null_ls.builtins.formatting.beautysh
     }
 
     null_ls.setup({ sources = sources })

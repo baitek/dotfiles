@@ -17,13 +17,18 @@ return {
     require('mason').setup({
       ensure_installed = {
         'black',
-        'php-cs-fixer',
-        'prettier'
+        'prettier',
+        'shellcheck',
+        'beautysh',
       }
     })
     require('mason-lspconfig').setup({
       ensure_installed = {
-        'lua_ls', 'gopls', 'phpactor', 'bashls', 'pyright', 'yamlls'
+        'lua_ls',
+        'gopls',
+        'bashls',
+        'pyright',
+        'yamlls'
       }
     })
 
@@ -42,9 +47,6 @@ return {
       capabilities = capabilities
     })
     lspconfig.gopls.setup({
-      capabilities = capabilities
-    })
-    lspconfig.phpactor.setup({
       capabilities = capabilities
     })
     lspconfig.bashls.setup({
@@ -74,7 +76,7 @@ return {
         local opts = { buffer = ev.buf }
         vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', '<leader>f', function()
+        vim.keymap.set({ 'n', 'v' }, '<leader>f', function()
           vim.lsp.buf.format { async = true }
         end, opts)
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)

@@ -46,7 +46,7 @@ source $ZSH/oh-my-zsh.sh
 ### User configuration
 #
 # Disable highlight after pasting text to console
-unset zle_bracketed_paste 
+unset zle_bracketed_paste
 
 # Preserve history
 HISTFILE=/home/bartek/.zsh_history
@@ -56,3 +56,4 @@ setopt appendhistory
 
 # Open terminal in home tmux session
 tmux attach-session -t /home/$(whoami) 2>/dev/null || tmux new-session -s /home/$(whoami) -c /home/$(whoami) 2>/dev/null
+

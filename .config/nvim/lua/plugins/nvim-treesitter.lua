@@ -6,7 +6,7 @@ return {
   config = function()
     vim.defer_fn(function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'php', 'go', 'lua', 'python', 'vimdoc', 'vim', 'bash', 'yaml' },
+        ensure_installed = { 'go', 'lua', 'python', 'bash', 'yaml' },
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },

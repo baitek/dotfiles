@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")"
-read -p 'This will overwrite you home config. Are you sure? (y/n): ' -n 1
+cd "$(dirname "${BASH_SOURCE[0]}")" || exit
+read -rp 'This will overwrite you home config. Are you sure? (y/n): ' -n 1
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e '\n\nModified/created files: '
     rsync --exclude 'bootstrap.sh' \
@@ -11,4 +11,3 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         --exclude '.config/nvim/lazy-lock.json' \
         -avhi . ~ | rg -e '^>f' | awk '{print "- " $2} END {if (NR == 0) print "[]"}'
 fi
-

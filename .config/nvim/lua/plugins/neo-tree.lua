@@ -9,6 +9,13 @@ return {
     'MunifTanjim/nui.nvim'
   },
   config = function()
-    vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>')
+    require('neo-tree').setup {
+      filesystem = {
+        filtered_items = {
+          visible = true
+        }
+      }
+    }
+    vim.keymap.set('n', '<C-n>', ':Neotree toggle current reveal_force_cwd left<CR>')
   end
 }

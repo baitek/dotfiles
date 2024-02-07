@@ -39,11 +39,12 @@ sudo apt install zsh
 
 sudo apt install sway grimes slurp wl-clipboard wofi
 ## configure sway
-## configure wofi (replacement for drun)
+## configure wofi
 
-sudo apt install neovim ripgrep fd-find
+sudo apt install neovim fzf ripgrep fd-find
 ## configure neovim
 
 sudo apt install tmux
 ## configure tmux
+## install tmux tpm
 ```
