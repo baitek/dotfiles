@@ -9,5 +9,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         --exclude '.git/' \
         --exclude '.gitignore' \
         --exclude '.config/nvim/lazy-lock.json' \
+        --exclude 'Session.vim' \
         -avhi . ~ | rg -e '^>f' | awk '{print "- " $2} END {if (NR == 0) print "[]"}'
 fi
