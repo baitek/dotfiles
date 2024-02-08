@@ -5,7 +5,6 @@ vim.wo.number = true            -- make line numbers default
 vim.o.relativenumber = true     -- enable relative numbers by default
 vim.opt.guicursor = ""          -- set cursor to block
 vim.o.mouse = 'a'               -- enable mouse mode
-vim.o.clipboard = 'unnamedplus' -- sync clipboard between OS and Neovim (see `:help 'clipboard'`)
 vim.o.breakindent = true        -- enable break indent
 vim.o.undofile = true           -- save undo history
 vim.o.swapfile = false          -- disable swap file by default
