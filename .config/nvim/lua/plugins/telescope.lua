@@ -49,6 +49,17 @@ return {
     require('telescope').load_extension('ui-select')
 
     -- See `:help telescope.builtin`
+    vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Search recently opened files' })
+    vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
+    vim.keymap.set('n', '<leader>/', function()
+      require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        winblend = 10,
+        previewer = false,
+        layout_config = {
+          width = 0.9,
+        },
+      })
+    end, { desc = 'Fuzzily search in current buffer' })
     vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = 'Search file names' })
     vim.keymap.set('n', '<leader>sp', require('telescope.builtin').live_grep, { desc = 'Search phrase in workspace' })
     vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search for help' })
