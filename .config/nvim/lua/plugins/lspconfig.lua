@@ -3,7 +3,7 @@ return {
   -- See `:help lspconfig`
   'neovim/nvim-lspconfig',
   dependencies = {
-    -- Automatically install LSPs to stdpath for neovim
+    -- Automatically install LSPs to stdpath for Neovim
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
 

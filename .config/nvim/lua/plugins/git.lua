@@ -1,6 +1,6 @@
 return {
   {
-    -- Arbitrary git command in NeoVim
+    -- Arbitrary git command in Neovim
     -- See `:help vim-fugitive`
     'tpope/vim-fugitive'
   },
