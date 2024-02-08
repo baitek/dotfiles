@@ -9,14 +9,7 @@ return {
         ensure_installed = { 'go', 'lua', 'python', 'bash', 'yaml' },
         auto_install = true,
         highlight = { enable = true },
-        indent = { enable = true },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = '<leader>h',
-            node_incremental = '<leader>h'
-          }
-        }
+        indent = { enable = true }
       }
     end, 0)
   end
