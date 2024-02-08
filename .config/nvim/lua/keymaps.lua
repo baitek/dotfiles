@@ -7,7 +7,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- For saving in vertical edit mode
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
--- Delete to void and then paste, so current copy buffer is preserved
+-- Delete selected to void, and then paste from register with preserving it
 vim.keymap.set('x', '<leader>p', [["_dP]])
 
 -- Delete to void instead of normal delete
