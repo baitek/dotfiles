@@ -7,14 +7,17 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- For saving in vertical edit mode
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
+-- Rebind Q to enter visual block mode
+vim.keymap.set('n', 'Q', '<C-v>', { noremap = true })
+
 -- Delete selected to void, and then paste from register with preserving it
 vim.keymap.set('x', '<leader>p', [["_dP]])
 
 -- Delete to void instead of normal delete
-vim.keymap.set({'n', 'v'}, '<leader>d', [["_d]])
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 
 -- System copy-paste
-vim.keymap.set({'n', 'v'}, '<leader>y', [["+y]])
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]])
 vim.keymap.set('n', '<leader>Y', [["+Y]])
 
 -- Remap for dealing with word wrap
