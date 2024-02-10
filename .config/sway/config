@@ -24,7 +24,7 @@ set $menu wofi --show run
 set $dmenu wofi --show drun
 
 # Your wallpaper image
-set $wallpaper ~/Pictures/mountains.jpeg
+set $wallpaper ~/.config/sway/mountains.jpeg
 
 include /etc/sway/config-vars.d/*
 
@@ -34,13 +34,11 @@ output * bg $wallpaper fill
 
 ### Idle configuration
 #
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-         timeout 300 "swaylock -f -i $wallpaper" \
-         timeout 600 "swaymsg 'output * dpms off'" resume "swaymsg 'output * dpms on'" \
-         before-sleep "swaylock -f -i $wallpaper"
+    timeout 570 'notify-send -t 30000 "Getting sleepy"' \
+    timeout 600 'swaylock -f -i $wallpaper' \
+    timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -i $wallpaper'
 
 ### Input configuration
 #
@@ -77,7 +75,7 @@ input "type:keyboard" {
     bindsym $mod+Shift+e exec 'swaymsg exit'
 
     # Lock screen
-    bindsym $mod+p exec swaylock -f -i $wallpaper
+    bindsym $mod+p exec bash ~/.config/sway/lockman.sh
 
 #
 # Moving around:
