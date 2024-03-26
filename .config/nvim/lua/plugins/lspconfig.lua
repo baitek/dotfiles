@@ -17,9 +17,9 @@ return {
     require('mason').setup({
       ensure_installed = {
         'black',
-        'prettier',
+        'buildifier',
         'shellcheck',
-        'beautysh',
+        'prettierd'
       }
     })
     require('mason-lspconfig').setup({
@@ -28,7 +28,9 @@ return {
         'gopls',
         'bashls',
         'pyright',
-        'yamlls'
+        'bzl',
+        'yamlls',
+        'tsserver'
       }
     })
     require('neodev').setup()
@@ -54,7 +56,16 @@ return {
     lspconfig.pyright.setup({
       capabilities = capabilities
     })
+    lspconfig.bzl.setup({
+      capabilities = capabilities
+    })
     lspconfig.yamlls.setup({
+      capabilities = capabilities
+    })
+    lspconfig.tsserver.setup({
+      capabilities = capabilities
+    })
+    lspconfig.groovyls.setup({
       capabilities = capabilities
     })
 
@@ -75,6 +86,7 @@ return {
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', '<leader>K', vim.lsp.buf.signature_help, opts)
       end,
     })
   end

@@ -15,6 +15,10 @@ vim.wo.signcolumn = 'yes'       -- keep signcolumn on by default
 vim.o.updatetime = 250          -- decrease update time
 vim.o.timeoutlen = 500          -- timeout for sequence
 vim.o.termguicolors = true      -- NOTE: you should make sure your terminal supports this
+vim.o.cursorline = true         -- highlight current line
+vim.o.showmode = false          -- don't show the mode since it's already in status line
+vim.opt.splitright = true       -- splits open to the right
+vim.opt.splitbelow = true       -- splits open below
 
 -- Replace tab with 2 spaces
 vim.cmd('set expandtab')
