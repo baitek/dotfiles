@@ -8,6 +8,8 @@ return {
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
         bash = { 'shellcheck' },
+        groovy = { 'npm-groovy-lint' },
+        Jenkinsfile = { 'npm-groovy-lint' },
       }
 
       -- create autocommand which carries out the actual linting on events
@@ -15,9 +17,18 @@ return {
       vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
-          require('lint').try_lint()
+          lint.try_lint()
         end,
       })
+      -- command to toggle diagnostics
+      vim.api.nvim_create_user_command('DiagnosticsToggle', function()
+        local current_value = vim.diagnostic.is_disabled()
+        if current_value then
+          vim.diagnostic.enable()
+        else
+          vim.diagnostic.disable()
+        end
+      end, {})
     end,
   },
 }

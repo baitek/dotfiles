@@ -62,6 +62,7 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- set how to display certain whitespace characters in the editor
+-- See `:help 'list'` and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
@@ -85,9 +86,6 @@ vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Center next search' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Center previous search' })
 
 -- diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- disable arrow keys in normal mode
@@ -111,9 +109,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- [[ Install `lazy.nvim` plugin manager ]]
 -- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
@@ -122,6 +123,40 @@ require('lazy').setup({
   'tpope/vim-sleuth', -- detect tabstop and shiftwidth automatically
   'christoomey/vim-tmux-navigator', -- seemless navigation between tmux panes and nvim windows
   { 'numToStr/Comment.nvim', opts = {} }, -- "gc" to comment visual regions/lines
+  { -- file tree panel
+    'nvim-neo-tree/neo-tree.nvim',
+    version = '*',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('neo-tree').setup {
+        close_if_last_window = true,
+        filesystem = {
+          filtered_items = {
+            visible = true,
+          },
+        },
+      }
+      vim.keymap.set('n', '<C-n>', ':Neotree toggle current reveal_force_cwd left<CR>')
+    end,
+  },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    config = function()
+      local neogit = require 'neogit'
+      neogit.setup {}
+      vim.keymap.set('n', '<leader>hs', neogit.open, { desc = 'Open Neogit', silent = true, noremap = true })
+      vim.keymap.set('n', '<leader>hB', ':Telescope git_branches<CR>', { desc = 'Change git branch', silent = true, noremap = true })
+    end,
+  },
   { -- adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -136,7 +171,7 @@ require('lazy').setup({
     config = function()
       require('gitsigns').setup {
         on_attach = function(bufnr)
-          local gs = package.loaded.gitsigns
+          local gs = require 'gitsigns'
 
           local function map(mode, l, r, opts)
             opts = opts or {}
@@ -147,36 +182,37 @@ require('lazy').setup({
           -- navigation
           map('n', ']c', function()
             if vim.wo.diff then
-              return ']c'
+              vim.cmd.normal { ']c', bang = true }
+            else
+              gs.nav_hunk 'next'
             end
-            vim.schedule(function()
-              gs.next_hunk()
-            end)
-            return '<Ignore>'
-          end, { expr = true, desc = 'Go to next git hunk' })
+          end, { desc = 'Jump to next git [c]hange' })
+
           map('n', '[c', function()
             if vim.wo.diff then
-              return '[c'
+              vim.cmd.normal { '[c', bang = true }
+            else
+              gs.nav_hunk 'prev'
             end
-            vim.schedule(function()
-              gs.prev_hunk()
-            end)
-            return '<Ignore>'
-          end, { expr = true, desc = 'Go to previous git hunk' })
+          end, { desc = 'Jump to previous git [c]hange' })
 
           -- actions
-          map('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset git hunk' })
+          -- visual mode
           map('v', '<leader>hr', function()
             gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
           end, { desc = 'Reset selected git hunk' })
+          -- normal mode
+          map('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset git hunk' })
           map('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset all git changes in buffer' })
           map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview git hunk' })
-          map('n', '<leader>hd', gs.diffthis, { desc = 'Open git diff of current file' })
+          map('n', '<leader>hb', gs.blame_line, { desc = 'Open git blame line' })
+          map('n', '<leader>hd', gs.diffthis, { desc = 'Open git diff against index' })
+          map('n', '<leader>hD', function()
+            gs.diffthis '@'
+          end, { desc = 'Open git diff against last commit' })
+          -- toggles
           map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Toggle git current line blame' })
           map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle preview of git deleted lines' })
-
-          -- text object
-          map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Higlight hovered over git hunk' })
         end,
       }
     end,
@@ -194,14 +230,14 @@ require('lazy').setup({
     event = 'VimEnter', -- sets the loading event to 'VimEnter'
     config = function() -- this is the function that runs, AFTER loading
       require('which-key').setup()
-      require('which-key').register { -- document existing key chains
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git[H]ub', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
+      require('which-key').add { -- document existing key chains
+        { '<leader>c', group = '[C]ode' },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>r', group = '[R]ename' },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>t', group = '[T]oggle' },
+        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       }
     end,
   },
@@ -258,12 +294,8 @@ require('lazy').setup({
           prompt_title = 'Live Grep in Open Files',
         }
       end, { desc = '[S]earch [/] in Open Files' })
-      vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-
   { -- LSP configuration & plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -275,8 +307,19 @@ require('lazy').setup({
       -- useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- used for completion, annotations and signatures of nvim apis
-      { 'folke/neodev.nvim', opts = {} },
+      -- configures Lua LSP for Neovim config, runtime and plugins
+      -- used for completion, annotations and signatures of Neovim apis
+      {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        opts = {
+          library = {
+            -- load luvit types when the `vim.uv` word is found
+            { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+          },
+        },
+      },
+      { 'Bilal2453/luvit-meta', lazy = true },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -302,21 +345,38 @@ require('lazy').setup({
           )
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame (often works across files)')
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- highlight references of the word under the cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.server_capabilities.documentHighlightProvider then
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
+              group = highlight_augroup,
               callback = vim.lsp.buf.document_highlight,
             })
 
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
               buffer = event.buf,
+              group = highlight_augroup,
               callback = vim.lsp.buf.clear_references,
             })
+
+            vim.api.nvim_create_autocmd('LspDetach', {
+              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+              callback = function(event2)
+                vim.lsp.buf.clear_references()
+                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+              end,
+            })
+          end
+
+          -- keymap to toggle inlay hints
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, '[T]oggle Inlay [H]ints')
           end
         end,
       })
@@ -330,11 +390,13 @@ require('lazy').setup({
         bashls = {},
         yamlls = {},
         tsserver = {},
+        groovyls = {},
         lua_ls = {
           settings = {
             Lua = {
               completion = {
                 callSnippet = 'Replace',
+                hint = { enable = true },
               },
             },
           },
@@ -351,6 +413,7 @@ require('lazy').setup({
         'pyright',
         'yamlls',
         'tsserver',
+        'groovyls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -365,10 +428,10 @@ require('lazy').setup({
       }
     end,
   },
-
   { -- autoformat
     'stevearc/conform.nvim',
-    lazy = false,
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
     keys = {
       {
         '<leader>f',
@@ -397,7 +460,6 @@ require('lazy').setup({
       },
     },
   },
-
   { -- autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -462,7 +524,6 @@ require('lazy').setup({
       }
     end,
   },
-
   {
     'folke/tokyonight.nvim',
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -471,7 +532,6 @@ require('lazy').setup({
       vim.cmd.hi 'Comment gui=none'
     end,
   },
-
   { -- collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
@@ -491,7 +551,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc', 'groovy' },
       auto_install = true,
       highlight = {
         enable = true,
@@ -500,6 +560,7 @@ require('lazy').setup({
       indent = { enable = true, disable = { 'ruby' } },
     },
     config = function(_, opts)
+      require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
     end,

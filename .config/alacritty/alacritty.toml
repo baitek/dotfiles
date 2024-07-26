@@ -1,0 +1,64 @@
+[[colors.indexed_colors]]
+color = "0xff9e64"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xdb4b4b"
+index = 17
+
+[colors.bright]
+black = "0x414868"
+blue = "0x7aa2f7"
+cyan = "0x7dcfff"
+green = "0x9ece6a"
+magenta = "0xbb9af7"
+red = "0xf7768e"
+white = "0xc0caf5"
+yellow = "0xe0af68"
+
+[colors.normal]
+black = "0x454752"
+blue = "0x7aa2f7"
+cyan = "0x7dcfff"
+green = "0x9ece6a"
+magenta = "0xbb9af7"
+red = "0xf7768e"
+white = "0xa9b1d6"
+yellow = "0xe0af68"
+
+[colors.primary]
+background = "0x1a1b26"
+foreground = "0xc0caf5"
+
+[cursor]
+blink_interval = 500
+blink_timeout = 5
+
+[cursor.style]
+blinking = "On"
+
+[font]
+size = 12
+
+[font.bold]
+family = "JetBrainsMonoNLNerdFont"
+
+[font.bold_italic]
+family = "JetBrainsMonoNLNerdFont"
+
+[font.italic]
+family = "JetBrainsMonoNLNerdFont"
+
+[font.normal]
+family = "JetBrainsMonoNLNerdFont"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[shell]
+program = "/usr/bin/zsh"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"

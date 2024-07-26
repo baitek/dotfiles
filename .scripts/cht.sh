@@ -9,8 +9,8 @@ if [[ -z $selected ]]; then
 fi
 
 if grep -qs "$selected" ~/.config/tmux/tmux-cht-languages; then
-	read -p "Enter Query: " query
-	query=$(echo $query | tr ' ' '+')
+	read -r -p "Enter Query: " query
+	query=$(echo "$query" | tr ' ' '+')
 	tmux neww bash -c "curl -s cht.sh/$selected/$query | less"
 else
 	tmux neww bash -c "curl -s cht.sh/$selected | less"
