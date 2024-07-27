@@ -1,44 +1,72 @@
-# .dotfiles
+# dotfiles
 
-Window manager: [sway](https://github.com/swaywm/sway)  
-Terminal: [alacritty](https://github.com/alacritty/alacritty)  
+Window manager: [Sway](https://github.com/swaywm/sway)  
+Terminal: [WezTerm](https://github.com/wez/wezterm)  
 Shell: [Zsh](https://www.zsh.org/) + [Oh My Zsh!](https://ohmyz.sh/)  
-Editor: [neovim](https://github.com/neovim/neovim)  
+Editor: [NeoVim](https://github.com/neovim/neovim)  
 Terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 
-## Thoughts about setup and choices
+## Setup
 
-Using window manager instead of desktop environment has an advantage of not having any mental overload. Using [sway](https://github.com/swaywm/sway) for that purpose, as it uses Wayland display server instead of X11.
+[Sway](https://github.com/swaywm/sway) is a window manager that uses Wayland
+display server (more secure alternative to X11). Using it instead of desktop
+environment has an advantage of not having mental overload of using `ALT+TAB`
+and allows switching tabs without thinking. Having terminal under `<prefix>+1`,
+browser under `<prefix>+2` is now instilled in my memory.
 
-[Alacritty](https://github.com/alacritty/alacritty) terminal is fast, comes with reasonable defaults and offers extensive customisation. Additionally it supports transparency and works well on Wayland.
+[WezTerm](https://github.com/wez/wezterm) is a GPU-accelerated terminal that
+has great documentation and is configurable using Lua.
 
-[Zsh](https://www.zsh.org/) with [Oh My Zsh!](https://ohmyz.sh/) seem to be good middleground between [bash](https://www.gnu.org/software/bash/) and [fish](https://fishshell.com/). It is easier to customise than bash, and in contrary to fish, Zsh is somewhat POSIX compliant.
+[Zsh](https://www.zsh.org/) shell used with [Oh My Zsh!](https://ohmyz.sh/)
+framework is easier to use and configure than
+[bash](https://www.gnu.org/software/bash/) and in contrary to
+[fish](https://fishshell.com/) is highly POSIX complaint.
 
-Switch to [neovim](https://github.com/neovim/neovim) was single handedly inspired by ThePrimeagen. The main advantages coming from this change are:
-- environment that encourages learning
-- keyboard only (no mental overload of switching to mouse)
-- customized IDE
-It's not easy, as I'm used to IDE, but I think, that the transition is worth it.
+[NeoVim](https://github.com/neovim/neovim) is a fast and highly extensible
+editor built on top of Vim.
 
-As for terminal multiplexer, [tmux](https://github.com/tmux/tmux) allows saving sessions, splitting panes and easier navigation between projects.
+[tmux](https://github.com/tmux/tmux) is a terminal multiplexer of choice.
+Allows saving sessions, splitting panes, easier navigation between projects and
+more. A lot of mentioned features are implemented by
+[WezTerm](https://github.com/wez/wezterm), but I've grown used to
+[tmux](https://github.com/tmux/tmux) and don't feel the need to change.
 
 ## Installation commands
 
-FYI: I'm running Ubuntu.
+### Ubuntu
 
-```
+```bash
 sudo apt update -y
-sudo apt install sway grimes slurp wl-clipboard wofi \
-  neovim ripgrep fzf fd-find tmux \
-  pipewire wdisplays xdg-desktop-portal-wlr
-# install nerdfonts (download, `fc-cache` to refresh, `fc-list | grep font` to verify)
+sudo apt install sway grimes wofi neovim ripgrep fzf fd-find tmux wdisplays \
+  xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq ffmpegthumbnailer unar \
+  zoxide poppler-utils slurp wl-clipboard brave-browser obsidian
 
-# configure neovim
-# install Alacritty (update fork with DynamicCopy)
-# install zsh (`chsh -s /usr/bin/zsh` to set as default)
-# install oh My Zsh! (`ZSH=~/.config/oh-my-zsh sh install.sh` for path alligned with this repo)
-# configure tmux together with TPM
-# configure pipewire
-# configure sway, wofi
-# install dunstrc (with dunstctl)
+# set zsh as default shell
+chsh -s /usr/bin/zsh
 ```
+
+This leaves following to install:
+
+- [WezTerm terminal](https://github.com/wez/wezterm)
+- [Oh My Zsh! framework](https://ohmyz.sh/) - install with specified path:
+  `ZSH=~/.config/oh-my-zsh sh install.sh`
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
+- [NerdFonts](https://github.com/ryanoasis/nerd-fonts) - download, extract to
+  `/usr/local/share/fonts`, `fc-cache` to refresh, `fc-list | grep <font>` to
+  verify
+- [Yazi terminal file manager](https://github.com/sxyazi/yazi)
+
+### Arch
+
+TODO
+
+## Next steps
+
+- learn GNU Stow to stop using `bootstrap.sh` script
+- continue improving at [NeoVim](https://github.com/neovim/neovim)
+  - improve at jumping/editing between the project (GOTO definition, go back
+    with `<C-t>` or `<C-^>`, multiline editing, Telescope with `<C-q>` and
+    `:cpo`)
+  - learn using quicklist
+  - use [vim-dadbod](https://github.com/tpope/vim-dadbod) for SQl
+  - use [nvim-dap](https://github.com/mfussenegger/nvim-dap) for debugging

@@ -1,5 +1,5 @@
 allow_images=true
-term=alacritty
+term=wezterm
 sort_order=alphabetical
 xoffset=710
 yoffset=275

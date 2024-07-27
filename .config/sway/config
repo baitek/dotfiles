@@ -12,7 +12,7 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term alacritty
+set $term wezterm
 
 # Your preferred font
 font JetBrainsMonoNLNerdFont 9
@@ -23,8 +23,30 @@ font JetBrainsMonoNLNerdFont 9
 set $menu wofi --show run
 set $dmenu wofi --show drun
 
+# Your theme
+include ~/.config/sway/theme.conf
+
+# Status Bar (read `man 5 sway-bar` for more information about this section)
+bar {
+    position top
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while ~/.config/sway/status.sh; do sleep 0.1; done
+
+    colors {
+        statusline #6172B0
+        background #E1E2E725
+        urgent_workspace #8C6C3E #8C6C3E #6172B0
+        focused_workspace #2E7DE9 #2E7DE9 #B4B5B9
+        active_workspace #A8AECB #A8AECB #2E7DE9
+        inactive_workspace #D0D5E3 #D0D5E3 #6172B0
+    }
+
+}
+
 # Your wallpaper image
-set $wallpaper ~/.config/sway/mountains.jpeg
+set $wallpaper ~/.config/sway/el-capitan.jpg
 
 include /etc/sway/config-vars.d/*
 
@@ -150,42 +172,23 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while ~/.config/sway/status.sh; do sleep 0.1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-
-}
-
 include /etc/sway/config.d/*
 
 ### Setup startup windows
 #
-workspace 1 output DP-2
-assign [app_id="Alacritty"] 1 
-exec --no-startup-id alacritty
+workspace 1
+assign [app_id="org.wezfurlong.wezterm"] 1
+exec --no-startup-id wezterm
 
-workspace 2 output DP-3
+workspace 2
 assign [class="Brave-browser"] 2 
 exec --no-startup-id brave-browser
 
-workspace 3 output DP-2
+workspace 3
 assign [class="WebCord"] 3 
 exec --no-startup-id webcord
 
-workspace 6 output DP-2
+workspace 6
 assign [class="obsidian"] 6
 exec --no-startup-id obsidian
 

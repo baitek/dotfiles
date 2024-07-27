@@ -73,7 +73,6 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlight' })
 vim.keymap.set('i', '<C-c>', '<Esc>', { desc = 'Save in vertical edit mode' })
-vim.keymap.set('n', 'Q', '<C-v>', { noremap = true, desc = 'Enter visual block mode' })
 vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Delete selected to void, and then paste from register without changing register' })
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = 'Delete to void instead of cut' })
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Copy text to system clipboard' })
@@ -528,7 +527,7 @@ require('lazy').setup({
     'folke/tokyonight.nvim',
     priority = 1000, -- make sure to load this before all the other start plugins
     init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-day'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
