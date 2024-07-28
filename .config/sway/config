@@ -194,8 +194,14 @@ exec --no-startup-id obsidian
 
 ### Custom settings
 #
-# Take selection screenshot
-bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
+# Take focused monitor screenshot and save to file
+bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy && wl-paste > $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S.png')
+
+# Take selection screenshot and save to clipboard
+bindsym Shift+Print exec selection=$(slurp) && grim -g "$selection" - | wl-copy && wl-paste > "$(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S').png"
+
+# Take screenshot and save to file
+bindsym $mod+Print exec grim - | wl-copy && wl-paste > $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S.png')
 
 # Sloppy focus for mouse
 focus_follows_mouse no
