@@ -1,5 +1,9 @@
 # dotfiles
 
+[Turns out light mode is better for the eyes 🤯](https://www.allaboutvision.com/digital-eye-strain/is-dark-mode-better-for-eyes/)
+
+[![Setup image](setup.png)](setup.png)
+
 Window manager: [Sway](https://github.com/swaywm/sway)  
 Terminal: [WezTerm](https://github.com/wez/wezterm)  
 Shell: [Zsh](https://www.zsh.org/) + [Oh My Zsh!](https://ohmyz.sh/)  
