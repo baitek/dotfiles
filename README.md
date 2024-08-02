@@ -54,7 +54,9 @@ This leaves following to install:
 - [WezTerm terminal](https://github.com/wez/wezterm)
 - [Oh My Zsh! framework](https://ohmyz.sh/) - install with specified path:
   `ZSH=~/.config/oh-my-zsh sh install.sh`
-- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) - install plugins
+  using `<prefix-I>`
+  to install plugins
 - [NerdFonts](https://github.com/ryanoasis/nerd-fonts) - download, extract to
   `/usr/local/share/fonts`, `fc-cache` to refresh, `fc-list | grep <font>` to
   verify
@@ -64,7 +66,10 @@ This leaves following to install:
 
 ```bash
 sudo pacman -Sy
-sudo pacman -S wezterm ttf-nerd-fonts-symbols-mono sway swaybg swayidle swaylock wl-clipboard slurp neovim wofi git unzip make gcc ripgrep fzf tmux xdg-desktop-portal-wlr zsh dunst jq ffmpegthumbnailer zoxide obsidian rsync poppler grim fd yazi unarchiver luarocks go npm python-pip
+sudo pacman -S sway swaybg swayidle swaylock grim wl-clipboard slurp wofi dunst \
+  neovim git unzip make gcc ripgrep fzf rsync go npm python-pip luarocks \ 
+  zsh tmux xdg-desktop-portal-wlr obsidian wezterm ttf-nerd-fonts-symbols-mono \
+  yazi fd unarchiver jq ffmpegthumbnailer zoxide poppler
 
 git clone https://aur.archlinux.org/yay.git
 cd yay
