@@ -1,5 +1,9 @@
 # dotfiles
 
+[Turns out light mode is better for the eyes 🤯](https://www.allaboutvision.com/digital-eye-strain/is-dark-mode-better-for-eyes/)
+
+[![Setup image](setup.png)](setup.png)
+
 Window manager: [Sway](https://github.com/swaywm/sway)  
 Terminal: [WezTerm](https://github.com/wez/wezterm)  
 Shell: [Zsh](https://www.zsh.org/) + [Oh My Zsh!](https://ohmyz.sh/)  
@@ -58,7 +62,15 @@ This leaves following to install:
 
 ### Arch
 
-TODO
+```bash
+sudo pacman -Sy
+sudo pacman -S wezterm ttf-nerd-fonts-symbols-mono sway swaybg swayidle swaylock wl-clipboard slurp neovim wofi git unzip make gcc ripgrep fzf tmux xdg-desktop-portal-wlr zsh dunst jq ffmpegthumbnailer zoxide obsidian rsync poppler grim fd yazi unarchiver luarocks go npm python-pip
+
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+sudo yay -S brave-bin wdisplays
+```
 
 ## Next steps
 

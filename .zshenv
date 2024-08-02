@@ -23,7 +23,8 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 "
 
 . "$HOME/.cargo/env"
-export PATH="$PATH:/usr/local/go/bin"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
 if [[ -z $TMUX ]]; then
     export PATH="$PATH:/home/$(whoami)/.scripts"
 fi
