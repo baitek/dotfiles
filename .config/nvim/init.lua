@@ -465,6 +465,7 @@ require('lazy').setup({
     dependencies = {
       {
         'L3MON4D3/LuaSnip',
+        dependencies = { "rafamadriz/friendly-snippets" },
         build = (function()
           if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
             return
@@ -481,6 +482,7 @@ require('lazy').setup({
     config = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
+      require("luasnip.loaders.from_vscode").lazy_load()
       luasnip.config.setup {}
 
       cmp.setup {
