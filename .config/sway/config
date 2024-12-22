@@ -46,7 +46,7 @@ bar {
 }
 
 # Your wallpaper image
-set $wallpaper ~/.config/sway/el-capitan.jpg
+set $wallpaper ~/.config/sway/mountains.jpeg
 
 include /etc/sway/config-vars.d/*
 

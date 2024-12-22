@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 
-config.color_scheme = "Tokyo Night Day"
+config.color_scheme = "Tokyo Night Moon"
 config.font = wezterm.font("JetBrainsMonoNLNerdFont")
 config.window_frame = {
 	font = wezterm.font("JetBrainsMonoNLNerdFont"),
