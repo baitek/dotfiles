@@ -23,50 +23,53 @@ has an advantage of not having mental overload of using `ALT+TAB` and mouse.
 [WezTerm](https://github.com/wez/wezterm) is a GPU-accelerated terminal that
 has great documentation and is configurable using Lua.
 
-[Zsh](https://www.zsh.org/) shell used with [Oh My Zsh!](https://ohmyz.sh/)
-framework is easier to use and configure than
+[Zsh](https://www.zsh.org/) shell used together with [Oh My
+Zsh!](https://ohmyz.sh/) has various quality of life improvements over
 [bash](https://www.gnu.org/software/bash/) and in contrary to
 [fish](https://fishshell.com/) is highly POSIX complaint.
 
 [NeoVim](https://github.com/neovim/neovim) is a fast and highly extensible
-editor built on top of Vim.
+editor built on top of VIM. It's a definitely fun editor to use when you get a
+hang of it.
 
-[tmux](https://github.com/tmux/tmux) is a terminal multiplexer of choice.
-Allows saving sessions, splitting panes, easier navigation between projects and
-more. A lot of mentioned features are implemented by
-[WezTerm](https://github.com/wez/wezterm), but I've grown used to
-[tmux](https://github.com/tmux/tmux) and don't feel the need to change.
+[tmux](https://github.com/tmux/tmux) is a terminal multiplexer. Personally I
+use it mainly for the following:
+
+- session - previously I had to open multiple VSC editors for each project. Now
+  switching between projects while using with `tmux-sessionizer` is a blast,
+- windows and panes - new windows and panes under single shortcut,
+- `tmux-continuum` and `tmux-resurrect` - all progress is saved and restored
+  automatically.
 
 ## Installation commands
 
-If package isn't available/up-to date in `apt`, then use `Appimage`/binary and
-put it in `/usr/local/bin`.
-
 ### Ubuntu
 
-```bash sudo apt update -y sudo apt install sway grim wofi ripgrep fd-find tmux
-wdisplays \ xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq
-ffmpegthumbnailer unar \ zoxide poppler-utils slurp wl-clipboard libfuse2 curl
-nodejs npm ```
+```bash
+sudo apt update -y
+sudo apt install sway grim wofi ripgrep fd-find tmux wdisplays \
+  xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq ffmpegthumbnailer unar \
+  zoxide poppler-utils slurp wl-clipboard libfuse2 curl nodejs npm
+```
 
 This leaves following to install:
 
 - [Neovim](https://neovim.io/) - AppImage
 - [WezTerm terminal](https://wezfurlong.org/wezterm/) - AppImage
-- [Obsidian](https://obsidian.md/) - AppImage
-(<https://github.com/electron/electron/issues/42510#issuecomment-2171583086>)
-- [Oh My Zsh! framework](https://ohmyz.sh/) - install with specified path:
-`ZSH=~/.config/oh-my-zsh sh install.sh`
-- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) - install plugins
-using `<prefix-I>` to install plugins
+- [Obsidian](https://obsidian.md/) - Snap
+- [Oh My Zsh! framework](https://ohmyz.sh/) - install with specified path to
+  configuration folder `ZSH=~/.config/oh-my-zsh sh install.sh`
+- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) - `<prefix-I>` to
+  install plugins
 - [fzf](https://junegunn.github.io/fzf/) - get latest binary
-- [NerdFonts](https://github.com/ryanoasis/nerd-fonts) - download, extract to
-`/usr/local/share/fonts`, `fc-cache` to refresh, `fc-list | grep <font>` to
-verify
-- [Yazi terminal file manager](https://github.com/sxyazi/yazi)
-- [Rust](https://www.rust-lang.org) - use rustup
-- [Go](https://go.dev/) - install folder in `/usr/local`
+- [NerdFonts](https://github.com/ryanoasis/nerd-fonts) - download font package,
+  extract it to `/usr/local/share/fonts`, `fc-cache` to refresh, `fc-list | grep
+  <font>` to verify
+- [Yazi terminal file manager](https://github.com/sxyazi/yazi) - binary file
+- [Rust](https://www.rust-lang.org) - default
+- [Go](https://go.dev/) - default
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/) and
-[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-- Oh My Zsh install
-- [LazyGit](https://github.com/jesseduffield/lazygit) -
+  [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) -
+  `git clone` to `~/.oh-my-zsh/custom/plugins`
+- [LazyGit](https://github.com/jesseduffield/lazygit) - download tar and follow
+  default instructions
