@@ -3,8 +3,8 @@
 [~~Turns out light mode is better for the eyes
 🤯~~](https://www.allaboutvision.com/digital-eye-strain/is-dark-mode-better-for-eyes/)
 
-Turns out I don't care that much, my eyes were never hurting using dark mode
-and Tokyo Night Moon more well adjusted.
+My eyes were never hurt using dark mode and darker themes just look so much
+better and are often more well-adjusted.
 
 [![Setup image](setup.png)](setup.png)
 
