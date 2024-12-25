@@ -1,6 +1,10 @@
 # dotfiles
 
-[Turns out light mode is better for the eyes 🤯](https://www.allaboutvision.com/digital-eye-strain/is-dark-mode-better-for-eyes/)
+[~~Turns out light mode is better for the eyes
+🤯~~](https://www.allaboutvision.com/digital-eye-strain/is-dark-mode-better-for-eyes/)
+
+Turns out I don't care that much, my eyes were never hurting using dark mode
+and Tokyo Night Moon more well adjusted.
 
 [![Setup image](setup.png)](setup.png)
 
@@ -12,11 +16,9 @@ Terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 
 ## Setup
 
-[Sway](https://github.com/swaywm/sway) is a window manager that uses Wayland
-display server (more secure alternative to X11). Using it instead of desktop
-environment has an advantage of not having mental overload of using `ALT+TAB`
-and allows switching tabs without thinking. Having terminal under `<prefix>+1`,
-browser under `<prefix>+2` is now instilled in my memory.
+[Sway](https://github.com/swaywm/sway) is a tilling Wayland compositor that can
+be easily managed using only keyboard. Using it instead of desktop environment
+has an advantage of not having mental overload of using `ALT+TAB` and mouse.
 
 [WezTerm](https://github.com/wez/wezterm) is a GPU-accelerated terminal that
 has great documentation and is configurable using Lua.
@@ -37,53 +39,34 @@ more. A lot of mentioned features are implemented by
 
 ## Installation commands
 
+If package isn't available/up-to date in `apt`, then use `Appimage`/binary and
+put it in `/usr/local/bin`.
+
 ### Ubuntu
 
-```bash
-sudo apt update -y
-sudo apt install sway grimes wofi neovim ripgrep fzf fd-find tmux wdisplays \
-  xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq ffmpegthumbnailer unar \
-  zoxide poppler-utils slurp wl-clipboard brave-browser obsidian
-
-# set zsh as default shell
-chsh -s /usr/bin/zsh
-```
+```bash sudo apt update -y sudo apt install sway grim wofi ripgrep fd-find tmux
+wdisplays \ xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq
+ffmpegthumbnailer unar \ zoxide poppler-utils slurp wl-clipboard libfuse2 curl
+nodejs npm ```
 
 This leaves following to install:
 
-- [WezTerm terminal](https://github.com/wez/wezterm)
+- [Neovim](https://neovim.io/) - AppImage
+- [WezTerm terminal](https://wezfurlong.org/wezterm/) - AppImage
+- [Obsidian](https://obsidian.md/) - AppImage
+(<https://github.com/electron/electron/issues/42510#issuecomment-2171583086>)
 - [Oh My Zsh! framework](https://ohmyz.sh/) - install with specified path:
-  `ZSH=~/.config/oh-my-zsh sh install.sh`
+`ZSH=~/.config/oh-my-zsh sh install.sh`
 - [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) - install plugins
-  using `<prefix-I>`
-  to install plugins
+using `<prefix-I>` to install plugins
+- [fzf](https://junegunn.github.io/fzf/) - get latest binary
 - [NerdFonts](https://github.com/ryanoasis/nerd-fonts) - download, extract to
-  `/usr/local/share/fonts`, `fc-cache` to refresh, `fc-list | grep <font>` to
-  verify
+`/usr/local/share/fonts`, `fc-cache` to refresh, `fc-list | grep <font>` to
+verify
 - [Yazi terminal file manager](https://github.com/sxyazi/yazi)
-
-### Arch
-
-```bash
-sudo pacman -Sy
-sudo pacman -S sway swaybg swayidle swaylock grim wl-clipboard slurp wofi dunst \
-  neovim git unzip make gcc ripgrep fzf rsync go npm python-pip luarocks \ 
-  zsh tmux xdg-desktop-portal-wlr obsidian wezterm ttf-nerd-fonts-symbols-mono \
-  yazi fd unarchiver jq ffmpegthumbnailer zoxide poppler
-
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-sudo yay -S brave-bin wdisplays
-```
-
-## Next steps
-
-- learn GNU Stow to stop using `bootstrap.sh` script
-- continue improving at [NeoVim](https://github.com/neovim/neovim)
-  - improve at jumping/editing between the project (GOTO definition, go back
-    with `<C-t>` or `<C-^>`, multiline editing, Telescope with `<C-q>` and
-    `:cpo`)
-  - learn using quicklist
-  - use [vim-dadbod](https://github.com/tpope/vim-dadbod) for SQl
-  - use [nvim-dap](https://github.com/mfussenegger/nvim-dap) for debugging
+- [Rust](https://www.rust-lang.org) - use rustup
+- [Go](https://go.dev/) - install folder in `/usr/local`
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/) and
+[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- Oh My Zsh install
+- [LazyGit](https://github.com/jesseduffield/lazygit) -

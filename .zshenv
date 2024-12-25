@@ -22,9 +22,15 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=spinner:#ff007c \
 "
 
+# Envs for languages
 . "$HOME/.cargo/env"
-export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:/usr/local/go/bin"
+
+# Set default editor to Neovim
+export EDITOR="nvim"
+export GIT_EDITOR="nvim"
+export VISUAL="nvim"
+
 if [[ -z $TMUX ]]; then
     export PATH="$PATH:/home/$(whoami)/.scripts"
 fi
