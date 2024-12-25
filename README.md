@@ -3,8 +3,8 @@
 [~~Turns out light mode is better for the eyes
 🤯~~](https://www.allaboutvision.com/digital-eye-strain/is-dark-mode-better-for-eyes/)
 
-My eyes were never hurt using dark mode and darker themes just look so much
-better and are often more well-adjusted.
+My eyes have never been strained when using dark mode, and darker themes not
+only look better but are often more widely available.
 
 [![Setup image](setup.png)](setup.png)
 
