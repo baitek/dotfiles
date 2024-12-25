@@ -183,16 +183,20 @@ assign [app_id="org.wezfurlong.wezterm"] 1
 exec --no-startup-id wezterm
 
 workspace 2
-assign [app_id="firefox"] 2 
+assign [app_id="firefox"] 2
 exec --no-startup-id firefox
 
 workspace 3
-assign [class="WebCord"] 3 
+assign [class="WebCord"] 3
 exec --no-startup-id webcord
 
 workspace 4
 assign [class="Spotify"] 4
 exec --no-startup-id spotify
+
+workspace 5
+assign [class="Gimp"] 5
+exec --no-startup-id gimp
 
 workspace 6
 assign [class="obsidian"] 6
