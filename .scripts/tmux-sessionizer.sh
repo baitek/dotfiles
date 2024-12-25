@@ -6,7 +6,9 @@
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find ~/workspaces ~/repos ~/Documents -mindepth 1 -maxdepth 1 -type d | fzf)
+  selected=$(
+    find ~ ~/workspaces ~/repos -mindepth 1 -maxdepth 1 ! -name ".*" -type d | fzf
+  )
 fi
 
 if [[ -z $selected ]]; then
