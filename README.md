@@ -73,3 +73,4 @@ This leaves following to install:
   `git clone` to `~/.oh-my-zsh/custom/plugins`
 - [LazyGit](https://github.com/jesseduffield/lazygit) - download tar and follow
   default instructions
+- [WebCord](https://github.com/SpacingBat3/WebCord) - Snap
