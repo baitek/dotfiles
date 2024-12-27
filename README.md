@@ -47,7 +47,7 @@ use it mainly for the following:
 
 ```bash
 sudo apt update -y
-sudo apt install sway grim wofi ripgrep fd-find tmux wdisplays \
+sudo apt install sway swaylock grim wofi ripgrep fd-find tmux wdisplays \
   xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq ffmpegthumbnailer unar \
   zoxide poppler-utils slurp wl-clipboard libfuse2 curl nodejs npm gimp stow tldr
 ```
