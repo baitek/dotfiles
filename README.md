@@ -74,3 +74,4 @@ This leaves following to install:
 - [LazyGit](https://github.com/jesseduffield/lazygit) - download tar and follow
   default instructions
 - [WebCord](https://github.com/SpacingBat3/WebCord) - Snap
+- [Bitwarden](https://bitwarden.com/) - Snap
