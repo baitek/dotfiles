@@ -49,7 +49,8 @@ use it mainly for the following:
 sudo apt update -y
 sudo apt install sway swaylock grim wofi ripgrep fd-find tmux wdisplays \
   xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq ffmpegthumbnailer unar \
-  zoxide poppler-utils slurp wl-clipboard libfuse2 curl nodejs npm gimp stow tldr
+  zoxide poppler-utils slurp wl-clipboard libfuse2 curl nodejs npm gimp stow tldr \
+  pavucontrol gucview
 ```
 
 This leaves following to install:
