@@ -187,8 +187,8 @@ assign [app_id="firefox"] 2
 exec --no-startup-id firefox
 
 workspace 3
-assign [class="WebCord"] 3
-exec --no-startup-id webcord
+assign [class="vesktop"] 3
+exec --no-startup-id vesktop
 
 workspace 4
 assign [class="Spotify"] 4
