@@ -48,12 +48,6 @@ source $ZSH/oh-my-zsh.sh
 # Disable highlight after pasting text to console
 unset zle_bracketed_paste
 
-# Preserve history
-HISTFILE=/home/bartek/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-
 # Setup shell integration with fzf
 source <(fzf --zsh)
 
