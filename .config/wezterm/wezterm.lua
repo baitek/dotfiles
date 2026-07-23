@@ -36,6 +36,13 @@ config.mouse_bindings = {
 		action = act.Nop,
 	},
 }
+config.keys = {
+	{
+		key = "n",
+		mods = "CTRL",
+		action = act.ToggleFullScreen,
+	},
+}
 
 -- and finally, return the configuration to wezterm
 return config
