@@ -62,4 +62,7 @@ function y() {
 }
 
 # Open terminal in home tmux session
-tmux attach-session -t /home/$(whoami) 2>/dev/null || tmux new-session -s /home/$(whoami) -c /home/$(whoami) 2>/dev/null
+tmux attach-session -t "$HOME" 2>/dev/null || tmux new-session -s "$HOME" -c "$HOME" 2>/dev/null
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"

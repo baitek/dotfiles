@@ -3,7 +3,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --info=inline-right \
   --ansi \
   --layout=reverse \
-  --border=none
+  --border=none \
   --color=bg+:#2d3f76 \
   --color=bg:#1e2030 \
   --color=border:#589ed7 \
@@ -31,6 +31,4 @@ export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 export VISUAL="nvim"
 
-if [[ -z $TMUX ]]; then
-    export PATH="$PATH:/home/$(whoami)/.scripts"
-fi
+export PATH="$PATH:$HOME/.scripts"

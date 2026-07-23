@@ -1,0 +1,7 @@
+[user]
+    name = baitek
+    email = bartosz.chajdas@gmail.com
+[pull]
+    rebase = true
+[rerere]
+    enabled = true
