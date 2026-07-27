@@ -66,7 +66,6 @@ This leaves following to install:
 - [NerdFonts](https://github.com/ryanoasis/nerd-fonts) - download font package,
   extract it to `/usr/local/share/fonts`, `fc-cache` to refresh, `fc-list | grep
   <font>` to verify
-- [Yazi terminal file manager](https://github.com/sxyazi/yazi) - binary file
 - [Rust](https://www.rust-lang.org) - default
 - [Go](https://go.dev/) - default
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/) and
