@@ -23,8 +23,8 @@ font JetBrainsMonoNL Nerd Font 9
 set $menu wofi --show run
 set $dmenu wofi --show drun
 
-# Your theme
-include ~/.config/sway/theme.conf
+# Load your config files
+include ~/.config/sway/conf.d/*.conf
 
 # Status Bar (read `man 5 sway-bar` for more information about this section)
 bar {
@@ -53,8 +53,14 @@ include /etc/sway/config-vars.d/*
 ### Output configuration
 #
 output * bg $wallpaper fill
-output DP-3 pos 0 0 res 2560x1440@144Hz
-output DP-2 pos 2560 0 res 2560x1440@144Hz
+output "AOC Q27G2G3R3B 18DQ4HA020080" {
+    pos 0 0
+    res 2560x1440@144Hz
+}
+output "AOC Q27G2G3R3B 18DQ4HA020096" {
+    pos 2560 0
+    res 2560x1440@144Hz
+}
 
 ### Idle configuration
 #
@@ -151,7 +157,7 @@ input "type:keyboard" {
 #
     # Switch the current container between different layout styles
     bindsym $mod+t layout tabbed
-    bindsym $mod+v layout toggle split
+    # bindsym $mod+v layout toggle split
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+f floating toggle
@@ -195,32 +201,27 @@ assign [class="Spotify"] 4
 exec --no-startup-id spotify
 
 workspace 5
-assign [class="Gimp"] 5
-exec --no-startup-id gimp
-
-workspace 6
-assign [class="obsidian"] 6
+assign [class="obsidian"] 5
 exec --no-startup-id obsidian
 
 ### Custom settings
 #
-# Take focused monitor screenshot and save to file
-bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy && wl-paste > $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S.png')
 
-# Take selection screenshot and save to clipboard
-bindsym Shift+Print exec selection=$(slurp) && grim -g "$selection" - | wl-copy && wl-paste > "$(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S').png"
+# Screenshots
+bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy && wl-paste > $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S.png') # focused monitor + save to clipboard
+bindsym Shift+Print exec selection=$(slurp) && grim -g "$selection" - | wl-copy && wl-paste > "$(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S').png" # selection + save to clipboard
 
-# Take screenshot and save to file
-bindsym $mod+Print exec grim - | wl-copy && wl-paste > $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S.png')
-
-# Sloppy focus for mouse
+# Fix sloppy focus for mouse
 focus_follows_mouse no
 
-# Run xdg-desktop-portal for video sharing on discord/obs
-exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
-
-# Show previous notification
+# Dunstctl notifications
 bindsym $mod+e exec dunstctl history-pop
-
-# Close all notifications
 bindsym $mod+w exec dunstctl close-all
+
+# Voxtype text-to-speech
+bindsym $mod+x exec voxtype record start
+bindsym --release $mod+x exec voxtype record stop
+
+# Clipboard history
+bindsym $mod+v exec cliphist list | wofi -d | cliphist decode | wl-copy
+

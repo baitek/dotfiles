@@ -2,7 +2,7 @@
 
 set -e
 
-selected_session=$(tmux list-sessions -F '#S' | grep -v "$HOME" | fzf)
+selected_session=$(tmux list-sessions -F '#S' | grep -Fv "$HOME" | fzf)
 
 if [[ -z $selected_session ]]; then
   exit 0

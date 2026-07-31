@@ -51,8 +51,8 @@ unset zle_bracketed_paste
 # Setup shell integration with fzf
 source <(fzf --zsh)
 
-# Open terminal in home tmux session
-tmux attach-session -t "$HOME" 2>/dev/null || tmux new-session -s "$HOME" -c "$HOME" 2>/dev/null
+# Open terminal in home tmux session (skip if already inside tmux)
+[[ -z "$TMUX" ]] && tmux attach-session -t "$HOME" 2>/dev/null || tmux new-session -s "$HOME" -c "$HOME" 2>/dev/null
 
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
