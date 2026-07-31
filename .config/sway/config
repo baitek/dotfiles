@@ -214,6 +214,9 @@ bindsym Shift+Print exec selection=$(slurp) && grim -g "$selection" - | wl-copy 
 # Fix sloppy focus for mouse
 focus_follows_mouse no
 
+# Run xdg-desktop-portal for video sharing on discord/obs
+exec --no-startup-id /usr/libexec/xdg-desktop-portal -r
+
 # Dunstctl notifications
 bindsym $mod+e exec dunstctl history-pop
 bindsym $mod+w exec dunstctl close-all
