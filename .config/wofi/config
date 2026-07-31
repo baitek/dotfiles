@@ -1,6 +1,5 @@
 allow_images=true
 term=wezterm
-sort_order=alphabetical
 xoffset=710
 yoffset=275
 show=run
