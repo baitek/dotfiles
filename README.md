@@ -47,10 +47,11 @@ use it mainly for the following:
 
 ```bash
 sudo apt update -y
-sudo apt install sway swaylock grim wofi ripgrep fd-find tmux wdisplays \
+sudo apt install sway swaylock swayidle grim wofi ripgrep fd-find tmux wdisplays \
   xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq ffmpegthumbnailer unar \
-  zoxide poppler-utils slurp wl-clipboard libfuse2 curl nodejs npm gimp stow tldr \
-  pavucontrol gucview
+  zoxide poppler-utils slurp wl-clipboard wtype cliphist libfuse2 curl nodejs npm \
+  gimp stow pavucontrol guvcview
+systemctl --user enable --now cliphist.service
 ```
 
 This leaves following to install:
@@ -74,4 +75,6 @@ This leaves following to install:
 - [LazyGit](https://github.com/jesseduffield/lazygit) - download tar and follow
   default instructions
 - [vesktop](https://github.com/Vencord/Vesktop) - `.deb` package
+- [Voxtype](https://github.com/peteonrails/voxtype) - `.deb` package
 - [Bitwarden](https://bitwarden.com/) - Snap
+
