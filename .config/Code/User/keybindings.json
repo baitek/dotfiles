@@ -1,0 +1,92 @@
+[
+  // TODO: finish configuration based on https://www.youtube.com/watch?v=JRnwt7oT1ZE if wanting to use VSC
+  // Left panel keybinds
+  {
+    "key": "ctrl+e",
+    "command": "workbench.view.explorer",
+    "when": "activeViewlet != 'workbench.view.explorer'"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "activeViewlet == 'workbench.view.explorer'"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "workbench.view.search",
+    "when": "activeViewlet != 'workbench.view.search'"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "activeViewlet == 'workbench.view.search'"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "workbench.view.scm",
+    "when": "activeViewlet != 'workbench.view.scm'"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "activeViewlet == 'workbench.view.scm'"
+  },
+  // Right panel keybinds
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.chat.open",
+    "when": "!chatSetupDisabledInWorkspace && !chatSetupHidden"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active"
+  },
+  // Choose buffer files
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.showAllEditors",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  // Next and previous file
+  {
+    "key": "tab",
+    "command": "workbench.action.nextEditorInGroup",
+    "when": "(editorTextFocus || !inputFocus) && (vim.mode == 'Normal' || vim.mode == 'Visual')"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "(editorTextFocus || !inputFocus) && (vim.mode == 'Normal' || vim.mode == 'Visual')"
+  },
+  // Create a new file
+  {
+    "key": "ctrl+enter",
+    "command": "workbench.action.files.newUntitledFile",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  // Split vertically
+  {
+    "key": "ctrl+w v",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  // Show documentation on hover
+  {
+    "key": "ctrl+k",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  // Code actions
+  {
+    "key": "space c a",
+    "command": "editor.action.quickFix",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  },
+  // Replace VIM search with VSCode search
+  {
+    "key": "/",
+    "command": "actions.find",
+    "when": "editorTextFocus && vim.mode == 'Normal'"
+  }
+]

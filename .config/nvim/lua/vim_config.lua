@@ -15,5 +15,6 @@ o.ignorecase = true
 o.smartcase = true
 o.splitright = true
 o.splitbelow = true
+o.swapfile = false
 
 vim.cmd.colorscheme("tokyonight")

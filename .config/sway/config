@@ -26,27 +26,8 @@ set $dmenu wofi --show drun
 # Load your config files
 include ~/.config/sway/conf.d/*.conf
 
-# Status Bar (read `man 5 sway-bar` for more information about this section)
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while ~/.config/sway/status.sh; do sleep 0.1; done
-
-    colors {
-        statusline #6172B0
-        background #E1E2E725
-        urgent_workspace #8C6C3E #8C6C3E #6172B0
-        focused_workspace #2E7DE9 #2E7DE9 #B4B5B9
-        active_workspace #A8AECB #A8AECB #2E7DE9
-        inactive_workspace #D0D5E3 #D0D5E3 #6172B0
-    }
-
-}
-
 # Your wallpaper image
-set $wallpaper ~/.config/sway/mountains.jpeg
+set $wallpaper ~/.config/sway/thinking.png
 
 include /etc/sway/config-vars.d/*
 
@@ -200,12 +181,18 @@ workspace 4
 assign [class="Spotify"] 4
 exec --no-startup-id spotify
 
-workspace 5
-assign [class="obsidian"] 5
+workspace 6
+assign [class="obsidian"] 6
 exec --no-startup-id obsidian
 
 ### Custom settings
 #
+
+# Borderless sway
+default_border none
+default_floating_border none
+gaps outer 0
+gaps inner 0
 
 # Screenshots
 bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy && wl-paste > $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d_%H-%M-%S.png') # focused monitor + save to clipboard
@@ -227,4 +214,3 @@ bindsym --release $mod+x exec voxtype record stop
 
 # Clipboard history
 bindsym $mod+v exec cliphist list | wofi -d | cliphist decode | wl-copy
-

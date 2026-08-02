@@ -17,26 +17,11 @@ return {
       input = { enabled = true },
     },
     keys = {
-      { '<leader>f', function() Snacks.picker.files({ hidden = true }) end, desc = 'Find Files' },
-      { '<leader>s', function() Snacks.picker.grep() end,  desc = 'Search Text' },
-      { '<leader>k', function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-      { '<leader>b', function() Snacks.picker.buffers() end, desc = 'Buffers' },
-      { 'gd', function() Snacks.picker.lsp_definitions() end, desc = 'Goto Definition' },
-    },
-  },
-  {
-    "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-    },
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>",  desc = "Tmux Navigate Left" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>",  desc = "Tmux Navigate Down" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>",    desc = "Tmux Navigate Up" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>", desc = "Tmux Navigate Right" },
+      { '<leader>sf', function() Snacks.picker.files({ hidden = true }) end, desc = 'Find Files' },
+      { '<leader>ss', function() Snacks.picker.grep({ hidden = true }) end, desc = 'Search Text' },
+      { '<leader>sr', function() Snacks.picker.recent() end, desc = 'Recent Files' },
+      { '<leader>sk', function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      { '<leader>sb', function() Snacks.picker.buffers() end, desc = 'Buffers' }
     },
   },
 }

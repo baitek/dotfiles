@@ -1,0 +1,63 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["clock", "custom/voxtype"],
+    "modules-right": ["custom/uptime", "pulseaudio", "network", "cpu", "memory", "tray"],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "format": "{name}"
+    },
+
+    "clock": {
+        "format": "{:%d - %H:%M:%S}"
+    },
+
+    "custom/uptime": {
+        "exec": "awk '{ total = int($1 / 60); printf \"↑ %d h, %d m\\n\", int(total / 60), total % 60 }' /proc/uptime",
+        "interval": 60,
+        "tooltip": true,
+        "tooltip-format": "Computer uptime"
+    },
+
+    "pulseaudio": {
+        "format": "VOL {volume}%",
+        "format-muted": "VOL muted",
+        "tooltip-format": "{desc} {volume}%"
+    },
+
+    "network": {
+        "interface": "enp4s0",
+        "format-ethernet": "ETH",
+        "format-disconnected": "",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "Ethernet disconnected"
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "CPU {usage}%"
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "RAM {used:0.1f}G/{total:0.1f}G",
+        "tooltip-format": "RAM {percentage}% used"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8,
+        "show-passive-items": true
+    },
+
+    "custom/voxtype": {
+      "exec": "voxtype status --follow --format json",
+      "return-type": "json",
+      "format": "{}",
+      "tooltip": true,
+      "on-click": "systemctl --user restart voxtype"
+    }
+}

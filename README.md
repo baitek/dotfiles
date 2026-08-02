@@ -1,18 +1,12 @@
 # dotfiles
 
-[~~Turns out light mode is better for the eyes
-🤯~~](https://www.allaboutvision.com/digital-eye-strain/is-dark-mode-better-for-eyes/)
-
-My eyes have never been strained when using dark mode, and darker themes not
-only look better but are often more widely available.
-
 [![Setup image](setup.png)](setup.png)
 
 Window manager: [Sway](https://github.com/swaywm/sway)  
 Terminal: [WezTerm](https://github.com/wez/wezterm)  
 Shell: [Zsh](https://www.zsh.org/) + [Oh My Zsh!](https://ohmyz.sh/)  
-Editor: [NeoVim](https://github.com/neovim/neovim)  
-Terminal multiplexer: [tmux](https://github.com/tmux/tmux)
+Editors: [NeoVim](https://github.com/neovim/neovim) and [Visual Studio Code](https://code.visualstudio.com/)
+Terminal multiplexer: [herdr](https://herdr.dev)
 
 ## Setup
 
@@ -32,14 +26,12 @@ Zsh!](https://ohmyz.sh/) has various quality of life improvements over
 editor built on top of VIM. It's a definitely fun editor to use when you get a
 hang of it.
 
-[tmux](https://github.com/tmux/tmux) is a terminal multiplexer. Personally I
-use it mainly for the following:
+[Visual Studio Code](https://code.visualstudio.com/) as much as I'd like to rely
+only on NeoVim, some tasks are much more easier to be done using VSC. In my case
+it is configured to be similar to [NeoVim](https://github.com/neovim/neovim).
 
-- session - previously I had to open multiple VSC editors for each project. Now
-  switching between projects while using with `tmux-sessionizer` is a blast,
-- windows and panes - new windows and panes under single shortcut,
-- `tmux-continuum` and `tmux-resurrect` - all progress is saved and restored
-  automatically.
+[herdr](https://herdr.dev) is a replacement for tmux - it has more things working
+out of the box and allows tracking agentic sessions.
 
 ## Installation commands
 
@@ -47,22 +39,21 @@ use it mainly for the following:
 
 ```bash
 sudo apt update -y
-sudo apt install sway swaylock swayidle grim wofi ripgrep fd-find tmux wdisplays \
+sudo apt install sway swaylock swayidle grim wofi ripgrep fd-find wdisplays \
   xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq ffmpegthumbnailer unar \
   zoxide poppler-utils slurp wl-clipboard wtype cliphist libfuse2 curl nodejs npm \
   gimp stow pavucontrol guvcview
-systemctl --user enable --now cliphist.service
 ```
 
 This leaves following to install:
 
 - [Neovim](https://neovim.io/) - AppImage
+- [Visual Studio Code](https://code.visualstudio.com/) - `.deb` package`
 - [WezTerm terminal](https://wezfurlong.org/wezterm/) - AppImage
 - [Obsidian](https://obsidian.md/) - Snap
 - [Oh My Zsh! framework](https://ohmyz.sh/) - install with specified path to
   configuration folder `ZSH=~/.config/oh-my-zsh sh install.sh`
-- [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) - `<prefix-I>` to
-  install plugins
+- [herdr](https://herdr.dev) - default
 - [fzf](https://junegunn.github.io/fzf/) - get latest binary
 - [NerdFonts](https://github.com/ryanoasis/nerd-fonts) - download font package,
   extract it to `/usr/local/share/fonts`, `fc-cache` to refresh, `fc-list | grep

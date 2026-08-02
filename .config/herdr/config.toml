@@ -1,0 +1,34 @@
+onboarding = false
+[keys]
+prefix = "ctrl+a"
+settings = "prefix+shift+s"
+workspace_picker = "prefix+s"
+new_workspace = "prefix+f"
+new_tab = "prefix+c"
+edit_scrollback = ""
+copy_mode = "prefix+{"
+toggle_sidebar = "prefix+e"
+focus_pane_left = "ctrl+h"
+focus_pane_down = "ctrl+j"
+focus_pane_up = "ctrl+k"
+focus_pane_right = "ctrl+l"
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+navigate_pane_left = "ctrl+h"
+navigate_pane_down = "ctrl+j"
+navigate_pane_up = "ctrl+k"
+navigate_pane_right = "ctrl+l"
+split_horizontal = "prefix+h"
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
+
+[ui]
+prompt_new_tab_name = false
+
+[[keys.command]]
+key = "prefix+["
+type = "pane"
+command = "herdr pane read \"$HERDR_ACTIVE_PANE_ID\" --source recent-unwrapped --lines 20000 --format text | nvim - '+normal! G'"
+description = "edit scrollback"

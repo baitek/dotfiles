@@ -31,4 +31,11 @@ export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 export VISUAL="nvim"
 
+# Scripts path
 export PATH="$PATH:$HOME/.scripts"
+
+# Herdr path
+export PATH="$HOME/.local/bin:$PATH"
+
+# Opencode path
+export PATH="$HOME/.opencode/bin:$PATH"
