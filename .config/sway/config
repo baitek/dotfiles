@@ -165,6 +165,8 @@ include /etc/sway/config.d/*
 
 ### Setup startup windows
 #
+exec --no-startup-id waybar
+
 workspace 1
 assign [app_id="org.wezfurlong.wezterm"] 1
 exec --no-startup-id wezterm
@@ -172,10 +174,6 @@ exec --no-startup-id wezterm
 workspace 2
 assign [app_id="firefox"] 2
 exec --no-startup-id firefox
-
-workspace 3
-assign [class="vesktop"] 3
-exec --no-startup-id vesktop
 
 workspace 4
 assign [class="Spotify"] 4
@@ -185,10 +183,14 @@ workspace 6
 assign [class="obsidian"] 6
 exec --no-startup-id obsidian
 
+workspace 3
+assign [app_id="vesktop"] 3
+exec --no-startup-id vesktop
+
 ### Custom settings
 #
 
-# Borderless sway
+# Sway windows configuration
 default_border none
 default_floating_border none
 gaps outer 0

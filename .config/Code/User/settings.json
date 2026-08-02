@@ -1,11 +1,8 @@
 {
   "vim.handleKeys": {
-    "<C-p>": false,
-    "<C-n>": false,
-    "/": false,
     "<C-f>": false,
-    "<C-h>": false,
-    "<C-b>": false
+    "<S-h>": false,
+    "<S-l>": false
   },
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
@@ -20,57 +17,4 @@
   "editor.renderWhitespace": "trailing",
   "search.smartCase": true,
   "workbench.editor.openSideBySideDirection": "right",
-  "vim.normalModeKeyBindings": [
-    {
-      "before": [
-        "-"
-      ],
-      "commands": [
-        {
-          "command": "oil-code.open"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<cr>"
-      ],
-      "commands": [
-        {
-          "command": "oil-code.select"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<c-l>"
-      ],
-      "commands": [
-        {
-          "command": "oil-code.refresh"
-        }
-      ]
-    },
-    {
-      "before": [
-        "`"
-      ],
-      "commands": [
-        {
-          "command": "oil-code.cd"
-        }
-      ]
-    },
-    {
-      "before": [
-        "g",
-        "d"
-      ],
-      "commands": [
-        {
-          "command": "oil-code.toggleDetails"
-        }
-      ]
-    }
-  ]
 }
