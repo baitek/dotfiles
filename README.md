@@ -40,8 +40,8 @@ out of the box and allows tracking agentic sessions.
 ```bash
 sudo apt update -y
 sudo apt install sway swaylock swayidle grim wofi ripgrep fd-find wdisplays \
-  xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq ffmpegthumbnailer unar \
-  zoxide poppler-utils slurp wl-clipboard wtype cliphist libfuse2 curl nodejs npm \
+  xdg-desktop-portal-wlr zsh dunst git unzip make gcc jq \
+  slurp wl-clipboard wtype cliphist libfuse2 curl nodejs npm \
   gimp stow pavucontrol guvcview
 ```
 
@@ -68,4 +68,3 @@ This leaves following to install:
 - [vesktop](https://github.com/Vencord/Vesktop) - `.deb` package
 - [Voxtype](https://github.com/peteonrails/voxtype) - `.deb` package
 - [Bitwarden](https://bitwarden.com/) - Snap
-

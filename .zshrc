@@ -45,6 +45,9 @@ source $ZSH/oh-my-zsh.sh
 
 ### User configuration
 #
+# Start OpenCode with its port option by default
+alias opencode='opencode --port'
+
 # Disable highlight after pasting text to console
 unset zle_bracketed_paste
 
