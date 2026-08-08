@@ -13,10 +13,18 @@ return {
     lazy = false,
     opts = {
       picker = { enabled = true },
-      notifier = { enabled = true },
+      notifier = {
+        enabled = true,
+        timeout = 10000,
+        filter = function(notification)
+          return notification.title ~= 'opencode'
+        end,
+      },
       input = { enabled = true },
     },
     keys = {
+      { '<leader>sn', function() Snacks.notifier.show_history() end, desc = 'Notification history' },
+      { '<leader>sd', function() Snacks.picker.diagnostics() end, desc = 'Diagnostics' },
       { '<leader>sf', function() Snacks.picker.files({ hidden = true }) end, desc = 'Find Files' },
       { '<leader>ss', function() Snacks.picker.grep({ hidden = true }) end, desc = 'Search Text' },
       { '<leader>sr', function() Snacks.picker.recent() end, desc = 'Recent Files' },

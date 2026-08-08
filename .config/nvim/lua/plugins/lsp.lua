@@ -4,10 +4,26 @@ local server_overrides = {
   lua_ls = {
     settings = {
       Lua = {
-        diagnostics = { globals = { 'vim' } },
+        diagnostics = { globals = { 'vim', 'Snacks' } },
         workspace = {
           checkThirdParty = false,
           library = { vim.env.VIMRUNTIME },
+        },
+      },
+    },
+  },
+  gopls = {
+    settings = {
+      gopls = {
+        staticcheck = true,
+      },
+    },
+  },
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = 'basic',
         },
       },
     },
