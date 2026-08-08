@@ -1,5 +1,11 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
 
+vim.keymap.set('n', '<leader>ud', function()
+  local enabled = not vim.diagnostic.is_enabled()
+  vim.diagnostic.enable(enabled)
+  vim.notify(('Diagnostics %s'):format(enabled and 'enabled' or 'disabled'))
+end, { desc = 'Toggle diagnostics' })
+
 -- move selection
 vim.keymap.set("x", "<S-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set("x", "<S-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
