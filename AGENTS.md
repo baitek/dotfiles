@@ -1,12 +1,11 @@
-# global agent instructions
+# Repository Instructions
 
-- Never use the em dash "—". Use plain dash "-" instead
-- When writing commit messages, NEVER auto-add your agent name as co-author
-- Never manually modify CHANGELOG.md files or any files that are marked as auto-generated
-- When making technical decisions, do not give much weight to development cost. Instead, prefer quality, simplicity, robustness, scalability, and long term maintainability.
-- For one-off or infrequent operational work, start with the simplest direct end-to-end path. Do not build wrappers, control planes, policy layers, custom verifiers, or automation unless the direct path exposes a concrete blocker or repeated need that justifies the added machinery.
-- When doing bug fixes, always start with reproducing the bug in an E2E setting as closely aligned with how an end user would experience it as possible. This makes sure you find the real problem so your fix will actually solve it.
-- When end-to-end testing a product, be picky about the UI you see and be obsessed with pixel perfection. If something clearly looks off, even if it is not directly related to what you are doing, try to get it fixed along the way.
-- Apply that same high standard to engineering excellence: lint, test failures, and test flakiness. If you see one, even if it is not caused by what you are working on right now, still get it fixed.
-- Before using "dynamic workflows", "ultra code" or any harness feature that immediately spawns a large swarm of subagents, always explain the tradeoffs and ask the user for explicit approval.
-
+- This is a GNU Stow home-directory package, not an application. Repository paths mirror files under `$HOME`.
+- From the repository root, deploy the package with `stow --target="$HOME" .`; edit the repository files rather than deployed symlink targets.
+- There is no build system, automated test suite, lint configuration, formatter, code generator, or CI workflow in this repository.
+- Shell startup is split between `.zshenv` (environment and editor setup) and `.zshrc` (Oh My Zsh, fzf, and automatic herdr attachment).
+- `.config/sway/config` is the compositor entrypoint and includes every `.config/sway/conf.d/*.conf`; Sway startup changes may therefore live outside the main file.
+- Voxtype spans `.config/voxtype/config.toml`, Sway bindings and modes, the user service, and Waybar status. Changes to its output or key handling should be checked across those files.
+- Neovim starts at `.config/nvim/init.lua`; plugin declarations are under `.config/nvim/lua/plugins/`, and `lazy.nvim` is bootstrapped by `.config/nvim/lua/plugin.lua`.
+- For focused validation, run `git diff --check`, `sh -n .config/sway/lockman.sh`, `bash -n .config/sway/status.sh`, `luac -p .config/nvim/init.lua .config/nvim/lua/*.lua .config/nvim/lua/plugins/*.lua`, and `jq empty .config/waybar/config.jsonc`.
+- After deploying, validate Sway with `sway -C -c "$HOME/.config/sway/config"`; use `swaymsg reload`, `systemctl --user restart voxtype.service`, or `nvim --headless '+qa'` for the affected runtime.

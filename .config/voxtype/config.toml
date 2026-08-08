@@ -134,7 +134,7 @@ on_demand_loading = false
 # - type: Simulates keyboard input at cursor position (requires wtype or ydotool)
 # - clipboard: Copies text to clipboard (requires wl-copy)
 # - paste: Copies to clipboard then simulates paste keystroke (requires wl-copy and wtype or ydotool)
-mode = "type"
+mode = "paste"
 
 # Fall back to clipboard if typing fails
 fallback_to_clipboard = true

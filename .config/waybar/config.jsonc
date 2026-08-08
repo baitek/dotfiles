@@ -23,27 +23,27 @@
     },
 
     "pulseaudio": {
-        "format": "VOL {volume}%",
-        "format-muted": "VOL muted",
+        "format": "󰕾 {volume}%",
+        "format-muted": "󰖁 muted",
         "tooltip-format": "{desc} {volume}%"
     },
 
     "network": {
         "interface": "enp4s0",
-        "format-ethernet": "ETH",
-        "format-disconnected": "",
+        "format-ethernet": "{ifname}",
+        "format-disconnected": "{ifname}",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format-disconnected": "Ethernet disconnected"
     },
 
     "cpu": {
         "interval": 5,
-        "format": "CPU {usage}%"
+        "format": " {usage}%"
     },
 
     "memory": {
         "interval": 5,
-        "format": "RAM {used:0.1f}G/{total:0.1f}G",
+        "format": "󰍛 {used:0.1f}G/{total:0.1f}G",
         "tooltip-format": "RAM {percentage}% used"
     },
 

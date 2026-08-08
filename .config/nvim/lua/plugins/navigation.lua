@@ -24,4 +24,11 @@ return {
       { '<leader>sb', function() Snacks.picker.buffers() end, desc = 'Buffers' }
     },
   },
+  {
+    'paulbkim-dev/vim-herdr-navigation',
+    lazy = false,
+    config = function(plugin)
+      dofile(plugin.dir .. '/editor/nvim.lua')
+    end,
+  },
 }

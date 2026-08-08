@@ -8,10 +8,6 @@ new_tab = "prefix+c"
 edit_scrollback = ""
 copy_mode = "prefix+{"
 toggle_sidebar = "prefix+e"
-focus_pane_left = "ctrl+h"
-focus_pane_down = "ctrl+j"
-focus_pane_up = "ctrl+k"
-focus_pane_right = "ctrl+l"
 navigate_workspace_up = "k"
 navigate_workspace_down = "j"
 navigate_pane_left = "ctrl+h"
@@ -19,6 +15,7 @@ navigate_pane_down = "ctrl+j"
 navigate_pane_up = "ctrl+k"
 navigate_pane_right = "ctrl+l"
 split_horizontal = "prefix+h"
+split_vertical = "prefix+v"
 
 [theme]
 name = "tokyo-night"
@@ -32,3 +29,27 @@ key = "prefix+["
 type = "pane"
 command = "herdr pane read \"$HERDR_ACTIVE_PANE_ID\" --source recent-unwrapped --lines 20000 --format text | nvim - '+normal! G'"
 description = "edit scrollback"
+
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"

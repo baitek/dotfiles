@@ -15,4 +15,3 @@ vim.keymap.set({ 'x' }, 'p', function()
     vim.fn.setreg('+', value, regtype)
   end
 end, { desc = 'Paste over selection without clobbering the register' })
-
